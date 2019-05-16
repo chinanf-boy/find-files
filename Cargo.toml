@@ -1,0 +1,9 @@
+[package]
+name = "find-files"
+version = "0.1.0"
+authors = ["chinanf-boy <865501259@qq.com>"]
+edition = "2018"
+
+[dependencies]
+glob = "0.3.0"
+error-chain = "*"
