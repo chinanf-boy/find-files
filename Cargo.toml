@@ -5,5 +5,9 @@ authors = ["chinanf-boy <865501259@qq.com>"]
 edition = "2018"
 
 [dependencies]
-glob = "0.3.0"
-error-chain = "*"
+libc = "*"
+rustc-serialize = "*"
+ignore = "0.4"
+
+[lib]
+crate-type = ["cdylib"]

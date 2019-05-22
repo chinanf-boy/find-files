@@ -1,0 +1,21 @@
+{
+  "name": "find-files",
+  "version": "1.0.0",
+  "description": "use Rust crate (ignore), walk though Current Dir",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ffi": "^2.3.0",
+    "ref": "^1.3.5",
+    "ref-array": "^1.2.0"
+  },
+  "files": [
+    "rust-dylib",
+    "index.js"
+  ]
+}

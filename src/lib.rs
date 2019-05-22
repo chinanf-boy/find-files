@@ -1,37 +1,34 @@
-#[macro_use]
-extern crate error_chain;
-extern crate glob;
+extern crate ignore;
+extern crate libc;
+extern crate rustc_serialize;
 
-use glob::glob;
-use std::path::PathBuf;
+use ignore::Walk;
+use libc::c_char;
+use rustc_serialize::json;
+use std::ffi::CString;
 
-error_chain! {
-    foreign_links {
-        Glob(glob::GlobError);
-        Pattern(glob::PatternError);
-    }
-}
+#[no_mangle]
+pub extern "C" fn find_files() -> *mut c_char {
+    let mut res: Vec<String> = Vec::new();
 
-pub fn find_files() -> Result<Vec<PathBuf>> {
-    let mut res: Vec<PathBuf> = Vec::new();
-    for entry in glob("**/*.md").expect("Failed to read glob pattern") {
+    for entry in Walk::new("./") {
         match entry {
-            Ok(path) => res.push(path),
-            Err(e) => println!("{:?}", e),
+            Ok(path) => res.push(path.path().to_string_lossy().into_owned()),
+            Err(err) => println!("ERROR: {}", err),
         }
     }
 
-    Ok(res)
+    let json_string = CString::new(json::encode(&res).unwrap()).unwrap();
+
+    json_string.into_raw()
 }
 
-#[cfg(test)]
-mod tests {
-    use super::find_files;
-    use std::path::PathBuf;
-
-    #[test]
-    fn it_works() {
-        let path: PathBuf = [r"test.md"].iter().collect();
-        assert_eq!(find_files().ok(), Some(vec![path]));
-    }
+#[no_mangle]
+pub extern "C" fn free_memory(pointer: *mut c_char) {
+    unsafe {
+        if pointer.is_null() {
+            return;
+        }
+        CString::from_raw(pointer)
+    };
 }
