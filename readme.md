@@ -29,7 +29,7 @@ see Result
 - [doc-templite](https://github.com/chinanf-boy/doc-templite)
 
 ```js
-const fFile = require("find-files-rust")
+const fFile = require("find-files-rust") // Begin search once loading
 
 console.log(fFile.mds)
 // [
