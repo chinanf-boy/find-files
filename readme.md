@@ -23,3 +23,16 @@ npm run start
 see Result
 
 > with `node-ffi`
+
+## Use
+
+- [doc-templite](https://github.com/chinanf-boy/doc-templite)
+
+```js
+const fFile = require("find-files-rust")
+
+console.log(fFile.mds)
+// [
+    // ....
+// ]
+```

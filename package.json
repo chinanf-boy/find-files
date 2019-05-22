@@ -1,5 +1,5 @@
 {
-  "name": "find-files",
+  "name": "find-files-rust",
   "version": "1.0.0",
   "description": "use Rust crate (ignore), walk though Current Dir",
   "main": "index.js",
