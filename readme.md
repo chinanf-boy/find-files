@@ -62,4 +62,3 @@ var lib = ffi.Library(path.join(__dirname, './rust-dylib/libfind_files'), {
 ## Use by
 
 - [doc-templite](https://github.com/chinanf-boy/doc-templite)
-- [npm-modules-size](https://github.com/chinanf-boy/npm-modules-size)
