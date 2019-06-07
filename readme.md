@@ -31,7 +31,7 @@ see Result
   './rust-dylib/libfind_files.dylib',
   './src',
   './src/lib.rs' ]
-cost time: 0.009000000000000008 ms
+cost time: 0.009000000000000008 s
 ```
 
 ### Build
